@@ -26,14 +26,20 @@ divGenerator(256)
 
 
 
+
 //Drawing on the sketchboard
+var color = "#"
+function randomColor(colorOfBox){
+    color = "#"
+    var symbols = "0123456789ABCDEF"
+    for (let i = 0; i < 6; i++) {
+        color = color + symbols[Math.floor(Math.random()* 16)]
+    }
+    colorOfBox.target.style.backgroundColor = color
 
+}
 container.addEventListener("pointerdown", function(e){
-    e.target.style.backgroundColor = "green"
-    // container.addEventListener('mouseover', (event) => {
-    //     event.target.style.backgroundColor = "green"
-    // });
-
+    randomColor(e)
    
     container.addEventListener('mouseover', draw);
         
@@ -41,10 +47,15 @@ container.addEventListener("pointerdown", function(e){
       container.removeEventListener('mouseover', draw);
         });
     function draw(hoveredBoxes){
-        hoveredBoxes.target.style.backgroundColor = "green" 
+      randomColor(hoveredBoxes)
+       
     }
     e.stopPropagation()
     
 })
+
+
+
+
 
 
